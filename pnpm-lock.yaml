@@ -32,6 +32,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@spotify-taste/llm-provider':
+        specifier: workspace:*
+        version: link:../../packages/llm-provider
       '@spotify-taste/spotify-client':
         specifier: workspace:*
         version: link:../../packages/spotify-client
@@ -78,6 +81,12 @@ importers:
       tailwindcss:
         specifier: ^4.1.0
         version: 4.2.2
+      typescript:
+        specifier: ^5.8.0
+        version: 5.9.3
+
+  packages/llm-provider:
+    devDependencies:
       typescript:
         specifier: ^5.8.0
         version: 5.9.3

@@ -33,6 +33,7 @@ export default function AuthLayout({
   const navItems = [
     { href: "/dashboard", label: "Library" },
     { href: "/stats", label: "Stats" },
+    { href: "/settings", label: "Settings" },
   ];
 
   return (
