@@ -8,3 +8,4 @@ dist/
 *.tsbuildinfo
 openspec/changes/
 plans/
+.claude/worktrees/
