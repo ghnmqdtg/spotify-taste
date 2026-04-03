@@ -46,9 +46,9 @@ export function InsightCard({
   };
 
   return (
-    <div className="rounded-lg border border-border bg-card p-5">
+    <div className="rounded-xl border border-border bg-card p-5 shadow-[var(--shadow-card)]">
       <div className="mb-3 flex items-center justify-between">
-        <h3 className="font-semibold">{title}</h3>
+        <h3 className="font-[family-name:var(--font-heading)] font-semibold text-foreground">{title}</h3>
         {onGenerate && !narrative && (
           <button
             onClick={handleGenerateClick}

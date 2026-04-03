@@ -48,7 +48,7 @@ export function Filters({ allTracks }: FiltersProps) {
       <div className="flex items-center gap-2">
         <button
           onClick={() => setShowFilters(!showFilters)}
-          className="rounded-md border border-input px-3 py-2 text-sm hover:bg-accent"
+          className="rounded-md border border-border px-3 py-1.5 text-[13px] text-muted-foreground hover:text-foreground"
         >
           Filters {hasActiveFilters && "*"}
         </button>
@@ -80,7 +80,7 @@ export function Filters({ allTracks }: FiltersProps) {
                   ),
                 })
               }
-              className="h-32 w-full rounded border border-input bg-secondary text-sm"
+              className="h-32 w-full rounded border border-border bg-card text-sm"
             >
               {allArtists.slice(0, 100).map((artist) => (
                 <option key={artist} value={artist}>
@@ -106,7 +106,7 @@ export function Filters({ allTracks }: FiltersProps) {
                   ),
                 })
               }
-              className="h-32 w-full rounded border border-input bg-secondary text-sm"
+              className="h-32 w-full rounded border border-border bg-card text-sm"
             >
               {allAlbums.slice(0, 100).map((album) => (
                 <option key={album} value={album}>
@@ -133,7 +133,7 @@ export function Filters({ allTracks }: FiltersProps) {
                     },
                   })
                 }
-                className="w-full rounded border border-input bg-secondary px-2 py-1 text-sm"
+                className="w-full rounded border border-border bg-card px-2 py-1 text-sm"
               />
               <input
                 type="date"
@@ -146,7 +146,7 @@ export function Filters({ allTracks }: FiltersProps) {
                     },
                   })
                 }
-                className="w-full rounded border border-input bg-secondary px-2 py-1 text-sm"
+                className="w-full rounded border border-border bg-card px-2 py-1 text-sm"
               />
             </div>
           </div>
@@ -173,7 +173,7 @@ export function Filters({ allTracks }: FiltersProps) {
                     },
                   })
                 }
-                className="w-full rounded border border-input bg-secondary px-2 py-1 text-sm"
+                className="w-full rounded border border-border bg-card px-2 py-1 text-sm"
               />
               <input
                 type="number"
@@ -191,7 +191,7 @@ export function Filters({ allTracks }: FiltersProps) {
                     },
                   })
                 }
-                className="w-full rounded border border-input bg-secondary px-2 py-1 text-sm"
+                className="w-full rounded border border-border bg-card px-2 py-1 text-sm"
               />
             </div>
           </div>
@@ -217,7 +217,7 @@ export function Filters({ allTracks }: FiltersProps) {
                       : e.target.value === "true",
                 })
               }
-              className="w-full rounded border border-input bg-secondary px-2 py-1 text-sm"
+              className="w-full rounded border border-border bg-card px-2 py-1 text-sm"
             >
               <option value="">All</option>
               <option value="true">Explicit only</option>

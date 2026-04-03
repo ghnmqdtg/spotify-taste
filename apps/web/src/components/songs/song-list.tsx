@@ -42,7 +42,7 @@ export function SongList({ tracks }: SongListProps) {
   return (
     <div className="flex flex-col">
       {/* Column headers */}
-      <div className="flex items-center gap-3 border-b border-border px-4 py-2 text-xs font-medium uppercase text-muted">
+      <div className="flex items-center gap-3 border-b border-border bg-background px-4 py-2 text-xs font-medium uppercase text-muted">
         <div className="size-4 shrink-0" /> {/* checkbox spacer */}
         <div className="size-10 shrink-0" /> {/* album art spacer */}
         <div className="flex min-w-0 flex-1 items-center gap-4">

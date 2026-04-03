@@ -18,17 +18,21 @@ export function DecadeChart({ tracks }: { tracks: LikedTrack[] }) {
   const maxCount = Math.max(...decadeData.map(([, c]) => c), 1);
 
   return (
-    <div className="rounded-xl border border-border bg-card p-6 shadow-[var(--shadow-soft-lift)]">
-      <h2 className="mb-4 font-heading text-lg font-semibold">By Decade</h2>
+    <div className="rounded-xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
+      <h2 className="mb-4 font-[family-name:var(--font-heading)] text-lg font-semibold text-foreground">
+        Release Decades
+      </h2>
       <div className="flex flex-col gap-2">
         {decadeData.map(([decade, count]) => (
           <div key={decade} className="flex items-center gap-3">
-            <span className="w-12 shrink-0 text-sm font-medium">{decade}</span>
+            <span className="w-12 shrink-0 text-sm font-medium text-accent">{decade}</span>
             <div className="flex-1">
-              <div
-                className="h-5 rounded bg-primary"
-                style={{ width: `${(count / maxCount) * 100}%` }}
-              />
+              <div className="h-2 rounded bg-background">
+                <div
+                  className="h-2 rounded bg-accent"
+                  style={{ width: `${(count / maxCount) * 100}%` }}
+                />
+              </div>
             </div>
             <span className="w-10 shrink-0 text-right text-sm text-muted">
               {count}

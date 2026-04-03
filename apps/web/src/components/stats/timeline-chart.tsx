@@ -20,13 +20,15 @@ export function TimelineChart({ tracks }: { tracks: LikedTrack[] }) {
   const displayData = monthlyData.slice(-24);
 
   return (
-    <div className="rounded-xl border border-border bg-card p-6 shadow-[var(--shadow-soft-lift)]">
-      <h2 className="mb-4 font-heading text-lg font-semibold">Songs Over Time</h2>
+    <div className="rounded-xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
+      <h2 className="mb-4 font-[family-name:var(--font-heading)] text-lg font-semibold text-foreground">
+        Songs Over Time
+      </h2>
       <div className="flex items-end gap-1" style={{ height: "200px" }}>
         {displayData.map(([month, count]) => (
           <div key={month} className="group relative flex flex-1 flex-col items-center justify-end">
             <div
-              className="w-full rounded-t bg-primary transition-opacity hover:opacity-80"
+              className="w-full rounded-t bg-accent transition-opacity hover:opacity-80"
               style={{ height: `${(count / maxCount) * 180}px` }}
             />
             <span className="absolute -top-6 hidden text-xs text-muted group-hover:block">

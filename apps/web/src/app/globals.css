@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-  /* Heritage Warmth — Light Mode */
   --color-background: #F5F2E9;
   --color-foreground: #2D2926;
   --color-muted: #8C8782;
@@ -9,57 +8,28 @@
   --color-border: #DCD8CB;
   --color-input: #DCD8CB;
   --color-ring: #7D6B3D;
-  --color-primary: #7D6B3D;
-  --color-primary-foreground: #F5F2E9;
+  --color-primary: #2D2926;
+  --color-primary-foreground: #FFFFFF;
   --color-secondary: #F5F2E9;
   --color-secondary-foreground: #2D2926;
-  --color-destructive: #e7000b;
+  --color-destructive: #ef4444;
   --color-destructive-foreground: #ffffff;
-  --color-accent: #F5F2E9;
-  --color-accent-foreground: #2D2926;
-  --color-card: #ffffff;
+  --color-accent: #7D6B3D;
+  --color-accent-foreground: #FFFFFF;
+  --color-card: #FFFFFF;
   --color-card-foreground: #2D2926;
-  --color-popover: #ffffff;
+  --color-popover: #FFFFFF;
   --color-popover-foreground: #2D2926;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.75rem;
 
-  /* Spatial Plus — Basic Roundness */
-  --radius-sm: 0;
-  --radius-md: 0.75rem;
-  --radius-lg: 1rem;
-
-  /* Spatial Plus — Soft Lift Elevation */
-  --shadow-soft-lift: 0 1px 3px #00000008, 0 4px 12px #0000000a;
-
-  /* Typography */
-  --font-heading: "Funnel Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
-  --font-caption: "Newsreader", ui-serif, Georgia, serif;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-funnel-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-accent: var(--font-newsreader), "Georgia", serif;
   --font-mono: ui-monospace, monospace;
-}
 
-/* Heritage Warmth — Dark Mode */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: #2D2926;
-    --color-foreground: #F5F2E9;
-    --color-muted: #a8a29e;
-    --color-muted-foreground: #d6d3cd;
-    --color-border: #ffffff1a;
-    --color-input: #ffffff1a;
-    --color-ring: #b8a472;
-    --color-primary: #b8a472;
-    --color-primary-foreground: #2D2926;
-    --color-secondary: #3a3531;
-    --color-secondary-foreground: #F5F2E9;
-    --color-destructive: #ff666999;
-    --color-destructive-foreground: #ffffff;
-    --color-accent: #3a3531;
-    --color-accent-foreground: #F5F2E9;
-    --color-card: #352f2c;
-    --color-card-foreground: #F5F2E9;
-    --color-popover: #352f2c;
-    --color-popover-foreground: #F5F2E9;
-  }
+  --shadow-card: 0 1px 3px #00000008, 0 4px 12px #0000000a;
 }
 
 body {
