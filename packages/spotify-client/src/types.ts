@@ -63,6 +63,7 @@ export interface SpotifyUser {
   display_name: string | null;
   email?: string;
   images: SpotifyImage[];
+  product?: string;
   uri: string;
 }
 

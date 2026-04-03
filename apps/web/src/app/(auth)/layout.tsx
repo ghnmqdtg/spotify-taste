@@ -4,13 +4,14 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/providers/auth-provider";
+import { UserProfileMenu } from "@/components/user-profile-menu";
 
 export default function AuthLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const { isAuthenticated, isLoading, logout } = useAuth();
+  const { isAuthenticated, isLoading } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
@@ -41,12 +42,7 @@ export default function AuthLayout({
             </Link>
           </nav>
         </div>
-        <button
-          onClick={logout}
-          className="rounded-md px-4 py-2 text-sm text-muted hover:text-foreground"
-        >
-          Logout
-        </button>
+        <UserProfileMenu />
       </header>
       <div>{children}</div>
     </div>
