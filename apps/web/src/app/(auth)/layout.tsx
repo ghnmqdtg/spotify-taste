@@ -40,6 +40,9 @@ export default function AuthLayout({
             <Link href="/stats" className="text-muted hover:text-foreground">
               Stats
             </Link>
+            <Link href="/settings" className="text-muted hover:text-foreground">
+              Settings
+            </Link>
           </nav>
         </div>
         <UserProfileMenu />
