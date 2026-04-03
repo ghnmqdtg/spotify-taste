@@ -10,6 +10,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@spotify-taste/llm-provider": "workspace:*",
     "@spotify-taste/spotify-client": "workspace:*",
     "@spotify-taste/ui": "workspace:*",
     "@tanstack/react-query": "^5.75.0",

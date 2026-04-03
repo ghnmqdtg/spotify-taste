@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   transpilePackages: [
+    "@spotify-taste/llm-provider",
     "@spotify-taste/spotify-client",
     "@spotify-taste/ui",
   ],
