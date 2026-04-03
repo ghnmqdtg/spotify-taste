@@ -16,10 +16,18 @@ export default function DashboardPage() {
   const { selectedUris, selectAll, deselectAll } = useLibraryStore();
 
   return (
-    <main className="flex flex-col gap-4 p-6">
+    <main className="flex flex-col gap-5 px-8 py-6">
+      {/* Page header */}
+      <div className="flex items-center justify-between">
+        <h1 className="font-heading text-3xl font-bold">Your Library</h1>
+        <span className="font-caption text-sm italic text-muted">
+          {allTracks.length.toLocaleString()} songs
+        </span>
+      </div>
+
       {/* Sync status */}
       {progress && !progress.done && (
-        <div className="rounded-md border border-border bg-card px-4 py-2 text-sm text-muted">
+        <div className="rounded-xl border border-border bg-card px-4 py-2 text-sm text-muted shadow-[var(--shadow-soft-lift)]">
           Syncing: {progress.fetched.toLocaleString()}
           {progress.total
             ? ` / ~${progress.total.toLocaleString()} songs`
@@ -27,7 +35,7 @@ export default function DashboardPage() {
         </div>
       )}
       {error && (
-        <div className="rounded-md border border-destructive bg-card px-4 py-2 text-sm text-destructive">
+        <div className="rounded-xl border border-destructive bg-card px-4 py-2 text-sm text-destructive">
           Sync error: {error}
         </div>
       )}

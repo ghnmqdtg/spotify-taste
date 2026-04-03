@@ -46,7 +46,7 @@ export function UserProfileMenu() {
     <div className="relative" ref={menuRef}>
       <button
         onClick={() => setOpen((prev) => !prev)}
-        className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-primary text-sm font-medium text-black transition-opacity hover:opacity-80"
+        className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-primary text-sm font-medium text-primary-foreground transition-opacity hover:opacity-80"
       >
         {avatarUrl ? (
           <img
@@ -60,7 +60,7 @@ export function UserProfileMenu() {
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full z-50 mt-2 w-64 rounded-lg border border-border bg-card p-4 shadow-lg">
+        <div className="absolute right-0 top-full z-50 mt-2 w-64 rounded-xl border border-border bg-card p-4 shadow-[var(--shadow-soft-lift)]">
           <div className="mb-3 border-b border-border pb-3">
             <p className="text-sm font-medium text-foreground">
               {user?.display_name ?? "Spotify User"}
