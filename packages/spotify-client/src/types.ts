@@ -72,6 +72,7 @@ export interface LikedTrack {
   uri: string;
   addedAt: string;
   name: string;
+  artistIds: string[];
   artistNames: string[];
   albumName: string;
   albumImageUrl: string;
@@ -86,6 +87,7 @@ export function normalizeTrack(saved: SpotifySavedTrack): LikedTrack {
     uri: track.uri,
     addedAt: saved.added_at,
     name: track.name,
+    artistIds: track.artists.map((a) => a.id),
     artistNames: track.artists.map((a) => a.name),
     albumName: track.album.name,
     albumImageUrl: track.album.images[0]?.url ?? "",
