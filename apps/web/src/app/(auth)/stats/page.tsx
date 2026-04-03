@@ -5,6 +5,9 @@ import { LibrarySummary } from "@/components/stats/library-summary";
 import { TopArtistsChart } from "@/components/stats/top-artists-chart";
 import { TimelineChart } from "@/components/stats/timeline-chart";
 import { DecadeChart } from "@/components/stats/decade-chart";
+import { TasteProfileSection } from "@/components/stats/taste-profile-section";
+import { InsightsSection } from "@/components/stats/insights-section";
+import { ErrorBoundary } from "@/components/error-boundary";
 
 export default function StatsPage() {
   const { tracks } = useLikedTracks();
@@ -28,6 +31,12 @@ export default function StatsPage() {
         <TopArtistsChart tracks={tracks} />
         <TimelineChart tracks={tracks} />
         <DecadeChart tracks={tracks} />
+        <ErrorBoundary>
+          <TasteProfileSection tracks={tracks} />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <InsightsSection tracks={tracks} />
+        </ErrorBoundary>
       </div>
     </main>
   );
