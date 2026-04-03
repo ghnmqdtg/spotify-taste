@@ -24,32 +24,29 @@ export function LibrarySummary({ tracks }: { tracks: LikedTrack[] }) {
   }, [tracks]);
 
   return (
-    <div className="rounded-lg border border-border bg-card p-6">
-      <h2 className="mb-4 text-lg font-semibold">Overview</h2>
-      <div className="grid grid-cols-2 gap-4">
-        <StatCard label="Total Songs" value={stats.totalSongs.toLocaleString()} />
-        <StatCard
-          label="Total Duration"
-          value={formatTotalDuration(stats.totalDuration)}
-        />
-        <StatCard
-          label="Unique Artists"
-          value={stats.uniqueArtists.toLocaleString()}
-        />
-        <StatCard
-          label="Unique Albums"
-          value={stats.uniqueAlbums.toLocaleString()}
-        />
-      </div>
+    <div className="grid grid-cols-2 gap-4 lg:col-span-2">
+      <StatCard label="Total Songs" value={stats.totalSongs.toLocaleString()} />
+      <StatCard
+        label="Total Duration"
+        value={formatTotalDuration(stats.totalDuration)}
+      />
+      <StatCard
+        label="Unique Artists"
+        value={stats.uniqueArtists.toLocaleString()}
+      />
+      <StatCard
+        label="Unique Albums"
+        value={stats.uniqueAlbums.toLocaleString()}
+      />
     </div>
   );
 }
 
 function StatCard({ label, value }: { label: string; value: string }) {
   return (
-    <div>
-      <p className="text-2xl font-bold">{value}</p>
-      <p className="text-sm text-muted">{label}</p>
+    <div className="rounded-xl border border-border bg-card p-6 shadow-[var(--shadow-soft-lift)]">
+      <p className="text-sm font-medium text-muted">{label}</p>
+      <p className="font-heading text-3xl font-bold">{value}</p>
     </div>
   );
 }

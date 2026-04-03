@@ -19,8 +19,8 @@ export function TopArtistsChart({ tracks }: { tracks: LikedTrack[] }) {
   const maxCount = topArtists[0]?.[1] ?? 1;
 
   return (
-    <div className="rounded-lg border border-border bg-card p-6">
-      <h2 className="mb-4 text-lg font-semibold">Top 10 Artists</h2>
+    <div className="rounded-xl border border-border bg-card p-6 shadow-[var(--shadow-soft-lift)]">
+      <h2 className="mb-4 font-heading text-lg font-semibold">Top Artists</h2>
       <div className="flex flex-col gap-2">
         {topArtists.map(([artist, count]) => (
           <div key={artist} className="flex items-center gap-3">
