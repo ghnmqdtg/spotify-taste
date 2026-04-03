@@ -19,21 +19,32 @@ export function TopArtistsChart({ tracks }: { tracks: LikedTrack[] }) {
   const maxCount = topArtists[0]?.[1] ?? 1;
 
   return (
-    <div className="rounded-xl border border-border bg-card p-6 shadow-[var(--shadow-soft-lift)]">
-      <h2 className="mb-4 font-heading text-lg font-semibold">Top Artists</h2>
-      <div className="flex flex-col gap-2">
-        {topArtists.map(([artist, count]) => (
+    <div className="rounded-xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
+      <h2 className="mb-4 font-[family-name:var(--font-heading)] text-lg font-semibold text-foreground">
+        Top Artists
+      </h2>
+      <div className="flex flex-col gap-3">
+        {topArtists.slice(0, 5).map(([artist, count], index) => (
           <div key={artist} className="flex items-center gap-3">
-            <span className="w-32 shrink-0 truncate text-sm">{artist}</span>
-            <div className="flex-1">
-              <div
-                className="h-5 rounded bg-primary"
-                style={{ width: `${(count / maxCount) * 100}%` }}
-              />
-            </div>
-            <span className="w-8 shrink-0 text-right text-sm text-muted">
-              {count}
+            <span className="w-5 shrink-0 text-sm font-semibold text-accent">
+              {index + 1}
             </span>
+            <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+              <span className="truncate text-sm font-medium text-foreground">
+                {artist}
+              </span>
+              <span className="font-[family-name:var(--font-accent)] text-xs text-muted">
+                {count} songs
+              </span>
+            </div>
+            <div className="w-[120px] shrink-0">
+              <div className="h-2 rounded bg-background">
+                <div
+                  className="h-2 rounded bg-accent"
+                  style={{ width: `${(count / maxCount) * 100}%` }}
+                />
+              </div>
+            </div>
           </div>
         ))}
       </div>

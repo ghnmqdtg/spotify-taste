@@ -140,9 +140,9 @@ export function TasteProfileSection({ tracks }: TasteProfileSectionProps) {
     : null;
 
   return (
-    <div className="col-span-full rounded-lg border border-border bg-card p-6">
+    <div className="rounded-xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
       <div className="mb-4 flex items-center justify-between">
-        <h2 className="text-lg font-semibold">Taste Profile</h2>
+        <h2 className="font-[family-name:var(--font-heading)] text-lg font-semibold text-foreground">Taste Profile</h2>
         <button
           onClick={handleGenerate}
           disabled={loading}

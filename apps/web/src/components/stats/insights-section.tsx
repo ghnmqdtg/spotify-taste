@@ -114,8 +114,8 @@ export function InsightsSection({ tracks }: InsightsSectionProps) {
   const monthSpan = new Set(tracks.map((t) => t.addedAt.substring(0, 7))).size;
 
   return (
-    <div className="col-span-full space-y-4">
-      <h2 className="text-lg font-semibold">Insights</h2>
+    <div className="space-y-4">
+      <h2 className="font-[family-name:var(--font-heading)] text-lg font-semibold text-foreground">Insights</h2>
 
       <div className="grid gap-4 lg:grid-cols-2">
         {/* Genre Evolution */}

@@ -24,19 +24,19 @@ export function LibrarySummary({ tracks }: { tracks: LikedTrack[] }) {
   }, [tracks]);
 
   return (
-    <div className="grid grid-cols-2 gap-4 lg:col-span-2">
+    <div className="grid grid-cols-4 gap-4">
       <StatCard label="Total Songs" value={stats.totalSongs.toLocaleString()} />
       <StatCard
-        label="Total Duration"
-        value={formatTotalDuration(stats.totalDuration)}
-      />
-      <StatCard
-        label="Unique Artists"
+        label="Artists"
         value={stats.uniqueArtists.toLocaleString()}
       />
       <StatCard
-        label="Unique Albums"
+        label="Albums"
         value={stats.uniqueAlbums.toLocaleString()}
+      />
+      <StatCard
+        label="Listening Time"
+        value={formatTotalDuration(stats.totalDuration)}
       />
     </div>
   );
@@ -44,9 +44,11 @@ export function LibrarySummary({ tracks }: { tracks: LikedTrack[] }) {
 
 function StatCard({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl border border-border bg-card p-6 shadow-[var(--shadow-soft-lift)]">
-      <p className="text-sm font-medium text-muted">{label}</p>
-      <p className="font-heading text-3xl font-bold">{value}</p>
+    <div className="rounded-xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
+      <p className="text-[13px] font-medium text-muted">{label}</p>
+      <p className="mt-2 font-[family-name:var(--font-heading)] text-[32px] font-bold text-foreground">
+        {value}
+      </p>
     </div>
   );
 }

@@ -3,6 +3,8 @@
 import { useState, useCallback } from "react";
 import { useLLMConfigStore } from "@/stores/llm-config-store";
 import { encryptString, decryptString } from "@/lib/crypto";
+import { useCurrentUser } from "@/hooks/use-current-user";
+import { useAuth } from "@/providers/auth-provider";
 import {
   createProvider,
   PROVIDER_MODELS,
@@ -99,106 +101,179 @@ export default function SettingsPage() {
   const isOllama = store.provider === "ollama";
 
   return (
-    <main className="mx-auto max-w-2xl p-6">
-      <h1 className="mb-6 text-2xl font-bold">LLM Settings</h1>
+    <main className="px-8 py-6">
+      <h1 className="mb-6 font-[family-name:var(--font-heading)] text-[28px] font-bold text-foreground">
+        Settings
+      </h1>
 
-      <div className="space-y-6 rounded-lg border border-border bg-card p-6">
-        {/* Provider selector */}
-        <div>
-          <label className="mb-2 block text-sm font-medium">Provider</label>
-          <div className="grid grid-cols-2 gap-2">
-            {(Object.keys(PROVIDER_LABELS) as ProviderType[]).map((p) => (
-              <button
-                key={p}
-                onClick={() => handleProviderChange(p)}
-                className={`rounded-md border px-4 py-2 text-sm transition-colors ${
-                  store.provider === p
-                    ? "border-accent bg-accent/10 text-accent"
-                    : "border-border text-muted hover:text-foreground"
-                }`}
-              >
-                {PROVIDER_LABELS[p]}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* API Key input (not for Ollama) */}
-        {!isOllama && (
-          <div>
-            <label className="mb-2 block text-sm font-medium">API Key</label>
-            <input
-              type="password"
-              value={apiKey}
-              onChange={(e) => {
-                setApiKey(e.target.value);
-                setTestResult(null);
-              }}
-              placeholder={`Enter your ${PROVIDER_LABELS[store.provider]} API key`}
-              className="w-full rounded-md border border-border bg-background px-4 py-2 text-sm"
-            />
-            <p className="mt-1 text-xs text-muted">
-              Your key is encrypted and stored locally. It never leaves your browser.
+      <div className="flex max-w-[640px] flex-col gap-6">
+        {/* LLM Provider Card */}
+        <div className="overflow-hidden rounded-xl border border-border bg-card shadow-[var(--shadow-card)]">
+          {/* Card Header */}
+          <div className="border-b border-border p-6">
+            <h2 className="font-[family-name:var(--font-heading)] text-lg font-semibold text-foreground">
+              LLM Provider
+            </h2>
+            <p className="mt-1 text-sm text-muted">
+              Configure your AI provider for music analysis features
             </p>
           </div>
-        )}
 
-        {/* Endpoint (required for Ollama, optional for others) */}
-        {isOllama && (
-          <div>
-            <label className="mb-2 block text-sm font-medium">
-              Endpoint URL
-            </label>
-            <input
-              type="text"
-              value={endpoint}
-              onChange={(e) => {
-                setEndpoint(e.target.value);
-                setTestResult(null);
-              }}
-              placeholder="http://localhost:11434"
-              className="w-full rounded-md border border-border bg-background px-4 py-2 text-sm"
-            />
+          {/* Card Body */}
+          <div className="flex flex-col gap-5 p-6">
+            {/* Provider selector */}
+            <div className="flex flex-col gap-1.5">
+              <label className="text-sm font-medium text-foreground">Provider</label>
+              <select
+                value={store.provider}
+                onChange={(e) => handleProviderChange(e.target.value as ProviderType)}
+                className="h-10 rounded-md border border-border bg-card px-3 text-sm text-foreground"
+              >
+                {(Object.keys(PROVIDER_LABELS) as ProviderType[]).map((p) => (
+                  <option key={p} value={p}>
+                    {PROVIDER_LABELS[p]}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* API Key input (not for Ollama) */}
+            {!isOllama && (
+              <div className="flex flex-col gap-1.5">
+                <label className="text-sm font-medium text-foreground">API Key</label>
+                <input
+                  type="password"
+                  value={apiKey}
+                  onChange={(e) => {
+                    setApiKey(e.target.value);
+                    setTestResult(null);
+                  }}
+                  placeholder={`Enter your ${PROVIDER_LABELS[store.provider]} API key`}
+                  className="h-10 rounded-md border border-border bg-card px-3 text-sm text-foreground placeholder:text-muted"
+                />
+              </div>
+            )}
+
+            {/* Validation status */}
+            {testResult?.ok && (
+              <div className="flex items-center gap-2">
+                <div className="size-2 rounded-full bg-green-500" />
+                <span className="text-[13px] text-green-500">API key validated successfully</span>
+              </div>
+            )}
+            {testResult && !testResult.ok && (
+              <span className="text-[13px] text-red-500">{testResult.message}</span>
+            )}
+
+            {/* Endpoint (required for Ollama) */}
+            {isOllama && (
+              <div className="flex flex-col gap-1.5">
+                <label className="text-sm font-medium text-foreground">
+                  Endpoint URL
+                </label>
+                <input
+                  type="text"
+                  value={endpoint}
+                  onChange={(e) => {
+                    setEndpoint(e.target.value);
+                    setTestResult(null);
+                  }}
+                  placeholder="http://localhost:11434"
+                  className="h-10 rounded-md border border-border bg-card px-3 text-sm text-foreground placeholder:text-muted"
+                />
+              </div>
+            )}
+
+            {/* Model selector */}
+            <div className="flex flex-col gap-1.5">
+              <label className="text-sm font-medium text-foreground">Model</label>
+              <select
+                value={store.model}
+                onChange={(e) => store.setModel(e.target.value)}
+                className="h-10 rounded-md border border-border bg-card px-3 text-sm text-foreground"
+              >
+                {models.map((m) => (
+                  <option key={m.id} value={m.id}>
+                    {m.name}
+                    {m.inputCostPer1M > 0
+                      ? ` ($${m.inputCostPer1M}/$${m.outputCostPer1M} per 1M tokens)`
+                      : " (Free)"}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Action buttons */}
+            <div className="flex justify-end gap-2">
+              <button
+                onClick={handleSaveAndTest}
+                disabled={testing || (!isOllama && !apiKey)}
+                className="rounded-md border border-border px-4 py-2 text-sm text-muted-foreground hover:text-foreground disabled:opacity-50"
+              >
+                Test Connection
+              </button>
+              <button
+                onClick={handleSaveAndTest}
+                disabled={testing || (!isOllama && !apiKey)}
+                className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground disabled:opacity-50"
+              >
+                {testing ? "Saving..." : "Save"}
+              </button>
+            </div>
           </div>
-        )}
-
-        {/* Model selector */}
-        <div>
-          <label className="mb-2 block text-sm font-medium">Model</label>
-          <select
-            value={store.model}
-            onChange={(e) => store.setModel(e.target.value)}
-            className="w-full rounded-md border border-border bg-background px-4 py-2 text-sm"
-          >
-            {models.map((m) => (
-              <option key={m.id} value={m.id}>
-                {m.name}
-                {m.inputCostPer1M > 0
-                  ? ` ($${m.inputCostPer1M}/$${m.outputCostPer1M} per 1M tokens)`
-                  : " (Free)"}
-              </option>
-            ))}
-          </select>
         </div>
 
-        {/* Test button */}
-        <div className="flex items-center gap-4">
-          <button
-            onClick={handleSaveAndTest}
-            disabled={testing || (!isOllama && !apiKey)}
-            className="rounded-md bg-accent px-6 py-2 text-sm font-medium text-white disabled:opacity-50"
-          >
-            {testing ? "Testing..." : "Save & Test Connection"}
-          </button>
-          {testResult && (
-            <span
-              className={`text-sm ${testResult.ok ? "text-green-500" : "text-red-500"}`}
-            >
-              {testResult.message}
-            </span>
-          )}
-        </div>
+        {/* Spotify Account Card */}
+        <SpotifyAccountCard />
       </div>
     </main>
+  );
+}
+
+function SpotifyAccountCard() {
+  const { data: user } = useCurrentUser();
+  const { logout } = useAuth();
+  const avatarUrl = user?.images?.[0]?.url;
+
+  return (
+    <div className="overflow-hidden rounded-xl border border-border bg-card shadow-[var(--shadow-card)]">
+      <div className="border-b border-border p-6">
+        <h2 className="font-[family-name:var(--font-heading)] text-lg font-semibold text-foreground">
+          Spotify Account
+        </h2>
+        <p className="mt-1 text-sm text-muted">
+          Manage your connected Spotify account
+        </p>
+      </div>
+      <div className="flex items-center justify-between p-6">
+        <div className="flex items-center gap-3">
+          {avatarUrl ? (
+            <img
+              src={avatarUrl}
+              alt={user?.display_name ?? "Avatar"}
+              className="size-10 rounded-full object-cover"
+            />
+          ) : (
+            <div className="flex size-10 items-center justify-center rounded-full bg-background text-sm font-medium">
+              {user?.display_name?.charAt(0) ?? "?"}
+            </div>
+          )}
+          <div>
+            <p className="text-sm font-medium text-foreground">
+              {user?.display_name ?? "Spotify User"}
+            </p>
+            <p className="font-[family-name:var(--font-accent)] text-[13px] text-muted">
+              {user?.product ? `${user.product.charAt(0).toUpperCase() + user.product.slice(1)} · Connected` : "Connected"}
+            </p>
+          </div>
+        </div>
+        <button
+          onClick={logout}
+          className="rounded-md border border-border px-4 py-2 text-sm text-destructive hover:bg-destructive/5"
+        >
+          Disconnect
+        </button>
+      </div>
+    </div>
   );
 }
