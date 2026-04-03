@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { db } from "@/lib/db";
 import { autoSync, type SyncProgress } from "@/lib/sync";
-import type { LikedTrack } from "@spotify-liked-songs-manager/spotify-client";
+import type { LikedTrack } from "@spotify-taste/spotify-client";
 
 const INITIAL_BATCH = 100;
 const CHUNK_SIZE = 500;
@@ -77,16 +77,6 @@ export function useLikedTracks(): {
     }
 
     loadProgressively();
-
-    // Subscribe to IndexedDB changes (new tracks from sync)
-    const subscription = db.likedTracks.hook("creating", () => {
-      // Reload when sync adds new tracks
-      loadingRef.current = false;
-    });
-
-    return () => {
-      db.likedTracks.hook("creating").unsubscribe(subscription);
-    };
   }, []);
 
   // Re-run when sync adds tracks — poll on a lightweight count check
