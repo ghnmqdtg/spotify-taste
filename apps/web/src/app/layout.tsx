@@ -3,7 +3,7 @@ import "./globals.css";
 import { Providers } from "@/providers";
 
 export const metadata: Metadata = {
-  title: "Spotify Liked Songs Manager",
+  title: "Spotify Taste",
   description:
     "Manage, browse, and organize your Spotify liked songs library with AI-powered tools",
 };

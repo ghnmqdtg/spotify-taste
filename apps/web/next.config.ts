@@ -8,8 +8,8 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   transpilePackages: [
-    "@spotify-liked-songs-manager/spotify-client",
-    "@spotify-liked-songs-manager/ui",
+    "@spotify-taste/spotify-client",
+    "@spotify-taste/ui",
   ],
 };
 

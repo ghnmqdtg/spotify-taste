@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { exchangeCodeForTokens } from "@spotify-liked-songs-manager/spotify-client";
+import { exchangeCodeForTokens } from "@spotify-taste/spotify-client";
 import { SPOTIFY_CLIENT_ID, SPOTIFY_REDIRECT_URI } from "@/lib/config";
 import { tokenStore } from "@/lib/token-store";
 

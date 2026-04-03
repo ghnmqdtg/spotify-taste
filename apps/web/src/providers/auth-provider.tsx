@@ -7,7 +7,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import { initSpotifyClient } from "@spotify-liked-songs-manager/spotify-client";
+import { initSpotifyClient } from "@spotify-taste/spotify-client";
 import { tokenStore } from "@/lib/token-store";
 
 interface AuthContextValue {

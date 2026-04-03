@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { LikedTrack } from "@spotify-liked-songs-manager/spotify-client";
+import type { LikedTrack } from "@spotify-taste/spotify-client";
 import { exportTracks, type ExportFormat } from "@/lib/export";
 
 const FORMATS: { value: ExportFormat; label: string; description: string }[] = [

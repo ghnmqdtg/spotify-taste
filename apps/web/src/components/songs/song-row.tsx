@@ -1,6 +1,6 @@
 "use client";
 
-import type { LikedTrack } from "@spotify-liked-songs-manager/spotify-client";
+import type { LikedTrack } from "@spotify-taste/spotify-client";
 import { useLibraryStore } from "@/stores/library-store";
 
 function formatDuration(ms: number): string {

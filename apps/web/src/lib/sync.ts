@@ -3,7 +3,7 @@ import {
   normalizeTrack,
   type SpotifySavedTrack,
   type SpotifyPaginatedResponse,
-} from "@spotify-liked-songs-manager/spotify-client";
+} from "@spotify-taste/spotify-client";
 import { db, getSyncMeta, setSyncMeta } from "./db";
 
 const PAGE_SIZE = 50;

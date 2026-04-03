@@ -1,5 +1,5 @@
 import Dexie, { type EntityTable } from "dexie";
-import type { LikedTrack } from "@spotify-liked-songs-manager/spotify-client";
+import type { LikedTrack } from "@spotify-taste/spotify-client";
 
 export interface SyncMetadata {
   key: string;
@@ -11,7 +11,7 @@ export class AppDatabase extends Dexie {
   syncMetadata!: EntityTable<SyncMetadata, "key">;
 
   constructor() {
-    super("SpotifyLikedSongsManager");
+    super("SpotifyTaste");
 
     this.version(1).stores({
       likedTracks: "uri, addedAt, name, *artistNames, albumName, explicit, releaseDate",

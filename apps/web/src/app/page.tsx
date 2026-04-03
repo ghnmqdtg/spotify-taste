@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <main>
-      <h1>Spotify Liked Songs Manager</h1>
+      <h1>Spotify Taste</h1>
     </main>
   );
 }

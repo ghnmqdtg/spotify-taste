@@ -1,4 +1,4 @@
-import type { LikedTrack } from "@spotify-liked-songs-manager/spotify-client";
+import type { LikedTrack } from "@spotify-taste/spotify-client";
 
 function formatDuration(ms: number): string {
   const minutes = Math.floor(ms / 60000);

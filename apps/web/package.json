@@ -1,5 +1,5 @@
 {
-  "name": "@spotify-liked-songs-manager/web",
+  "name": "@spotify-taste/web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,8 +10,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@spotify-liked-songs-manager/spotify-client": "workspace:*",
-    "@spotify-liked-songs-manager/ui": "workspace:*",
+    "@spotify-taste/spotify-client": "workspace:*",
+    "@spotify-taste/ui": "workspace:*",
     "@tanstack/react-query": "^5.75.0",
     "@tanstack/react-virtual": "^3.13.0",
     "dexie": "^4.0.11",

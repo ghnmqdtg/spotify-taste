@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
-import type { LikedTrack } from "@spotify-liked-songs-manager/spotify-client";
+import type { LikedTrack } from "@spotify-taste/spotify-client";
 import { useLibraryStore, type SortColumn } from "@/stores/library-store";
 import { SongRow } from "./song-row";
 

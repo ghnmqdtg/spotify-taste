@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import type { LikedTrack } from "@spotify-liked-songs-manager/spotify-client";
+import type { LikedTrack } from "@spotify-taste/spotify-client";
 import { useLibraryStore } from "@/stores/library-store";
 
 export function useFilteredTracks(tracks: LikedTrack[]): LikedTrack[] {

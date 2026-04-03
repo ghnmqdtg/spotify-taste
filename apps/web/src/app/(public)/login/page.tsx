@@ -1,6 +1,6 @@
 "use client";
 
-import { generatePKCE, buildAuthorizationUrl } from "@spotify-liked-songs-manager/spotify-client";
+import { generatePKCE, buildAuthorizationUrl } from "@spotify-taste/spotify-client";
 import { SPOTIFY_CLIENT_ID, SPOTIFY_REDIRECT_URI } from "@/lib/config";
 
 async function initiateLogin() {
@@ -23,7 +23,7 @@ async function initiateLogin() {
 export default function LoginPage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-6">
-      <h1 className="text-4xl font-bold">Spotify Liked Songs Manager</h1>
+      <h1 className="text-4xl font-bold">Spotify Taste</h1>
       <p className="text-muted">
         Browse, manage, and organize your liked songs library.
       </p>

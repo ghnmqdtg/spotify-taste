@@ -32,10 +32,10 @@ importers:
 
   apps/web:
     dependencies:
-      '@spotify-liked-songs-manager/spotify-client':
+      '@spotify-taste/spotify-client':
         specifier: workspace:*
         version: link:../../packages/spotify-client
-      '@spotify-liked-songs-manager/ui':
+      '@spotify-taste/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       '@tanstack/react-query':

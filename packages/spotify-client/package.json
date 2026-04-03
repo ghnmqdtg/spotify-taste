@@ -1,5 +1,5 @@
 {
-  "name": "@spotify-liked-songs-manager/spotify-client",
+  "name": "@spotify-taste/spotify-client",
   "version": "0.1.0",
   "private": true,
   "type": "module",

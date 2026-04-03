@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import type { LikedTrack } from "@spotify-liked-songs-manager/spotify-client";
+import type { LikedTrack } from "@spotify-taste/spotify-client";
 
 function formatTotalDuration(ms: number): string {
   const hours = Math.floor(ms / 3_600_000);

@@ -11,7 +11,7 @@ import {
   type SpotifyPlaylist,
   type SpotifyPaginatedResponse,
   type SpotifyUser,
-} from "@spotify-liked-songs-manager/spotify-client";
+} from "@spotify-taste/spotify-client";
 import { useLibraryStore } from "@/stores/library-store";
 import { useUndoStore } from "@/stores/undo-store";
 import { db } from "@/lib/db";

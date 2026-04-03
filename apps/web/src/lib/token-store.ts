@@ -1,4 +1,4 @@
-import { refreshAccessToken } from "@spotify-liked-songs-manager/spotify-client";
+import { refreshAccessToken } from "@spotify-taste/spotify-client";
 import { SPOTIFY_CLIENT_ID } from "./config";
 
 class TokenStore {
